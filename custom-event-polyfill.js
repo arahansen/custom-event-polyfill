@@ -38,7 +38,8 @@ try {
     };
     return evt;
   };
-
-  CustomEvent.prototype = window.Event.prototype;
-  window.CustomEvent = CustomEvent; // expose definition to window
+  if (typeof window !== 'undefined') {
+    CustomEvent.prototype = window.Event.prototype;
+    window.CustomEvent = CustomEvent; // expose definition to window
+  }
 }
